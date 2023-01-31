@@ -1,0 +1,67 @@
+<form [formGroup]="formGroup" (ngSubmit)="save()" novalidate>
+    <div class="">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="d-flex justify-content-between mt-3">
+                    <div class="me-3 ms-2">
+                        <label for="task" class="form-label m-2">Transaction Id</label>
+                        <input id="typeahead-basic" type="text" class="form-control vh-10" id="task" value="task"
+                            formControlName="task" [ngbTypeahead]="search" />
+                        <div *ngIf="formGroup.controls['task'].touched && formGroup.controls['task'].invalid"
+                            class="text-danger">
+                            <div *ngIf="formGroup.controls['task'].errors">This is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="startDate" class="form-label m-2">Start Date</label>
+                        <div class="input-group">
+                            <p-calendar formControlName="startDate" [showTime]="true" [showSeconds]="true"
+                                inputId="startDate"></p-calendar>
+                        </div>
+                        <div *ngIf="formGroup.controls['startDate'].touched && formGroup.controls['startDate'].invalid"
+                            class="text-danger">
+                            <div *ngIf="formGroup.controls['startDate'].errors">Start Date is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <label for="endDate" class="form-label m-2">End Date</label>
+                        <div class="input-group">
+                            <p-calendar formControlName="endDate" [showTime]="true" [showSeconds]="true"
+                                inputId="endDate"></p-calendar>
+                        </div>
+                        <div *ngIf="formGroup.controls['endDate'].touched && formGroup.controls['endDate'].invalid"
+                            class="text-danger">
+                            <div *ngIf="formGroup.controls['endDate'].errors"> Date is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ms-3 mt-1">
+                        <button class="btn btn-lg btn-primary pull-xs-right btn-style" type="submit">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks">
+            <td>{{task.task}}</td>
+            <td>{{task.startDate | date:"EEEE d MMMM y h:mm a"}}</td>
+            <td>{{task.endDate | date:"EEEE d MMMM y h:mm a"}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -5,6 +5,8 @@ import { StyleSwitcherComponent } from './components/header/style-switcher/style
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './service/api.service';
+import { TaskApiService } from './service/task-api.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
   exports: [
     HttpClientModule,
     HeaderComponent
+  ],
+  providers: [
+    ApiService,
+    TaskApiService
   ]
 })
 export class CoreModule { }

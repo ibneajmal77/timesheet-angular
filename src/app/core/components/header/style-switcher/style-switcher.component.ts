@@ -13,7 +13,7 @@ export class StyleSwitcherComponent {
     'tailwind': { key: 'tailwind' },
     'bootstrap': { key: 'bootstrap' }
   }
-  cssLibrary: string = this.cssLibraryOptions.tailwind.key;
+  cssLibrary: string = this.cssLibraryOptions.bootstrap.key;
 
 
   constructor(@Inject(DOCUMENT) private document: Document) {
